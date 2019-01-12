@@ -1,12 +1,12 @@
 let status = 'inTheTeam';
-let members = []
+let members = [];
+
+let statusDictionary = {"team":"בצוות", "outForFewMinutes": "יצאתי לכמה דקות", "vacation": "בחופש", "duty": "בתורנות", "meeting": "בפגישה"};
 
 const memberHtmlTemplate = `
 <p>Location of {{namePlaceholder}}</p>
 <small>{{statusPlaceholder}}</small>
-`
-
-console.log(member);
+`;
 
 function changeStatus(x) {
     status = x.value;
