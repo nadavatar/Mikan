@@ -1,8 +1,10 @@
 let status = 'inTheTeam';
-let member = {
-    "name": "Nadav",
-    "status": status
-}
+let members = []
+
+const memberHtmlTemplate = `
+<p>Location of {{namePlaceholder}}</p>
+<small>{{statusPlaceholder}}</small>
+`
 
 console.log(member);
 
