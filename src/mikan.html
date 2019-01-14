@@ -17,7 +17,7 @@
 
             <p>Nadav</p>
             <div class="form-group">
-                <select name="Location" onchange="changeStatus(this)">
+                <select name="Location" id="selection">
                     <option value="team">בצוות</option>
                     <option value="outForFewMinutes">יצאתי לכמה דקות</option>
                     <option value="vacation">בחופש</option>
@@ -25,7 +25,7 @@
                     <option value="meeting">בפגישה</option>
                 </select>
             </div>
-            <!--  <button id="addStickyNote" type="submit" class="btn btn-primary">Submit</button> -->
+            <button id="change" type="submit" class="btn btn-primary" onclick="changeStatus()">Change Status</button> 
             
             <p>Location of Nadav</p>
             <small>בצוות</small>
