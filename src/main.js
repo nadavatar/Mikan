@@ -21,4 +21,5 @@ function changeStatus() {
     console.log(selectionValue);
     dummyMember.status = selectionValue;
     console.log(dummyMember);
+    console.log(statusDictionary.outForFewMinutes);
 }
