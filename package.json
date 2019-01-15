@@ -1,0 +1,23 @@
+{
+  "name": "mikan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "lite-server --baseDir=\"src\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadavatar/Mikan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadavatar/Mikan/issues"
+  },
+  "homepage": "https://github.com/nadavatar/Mikan#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
+}
