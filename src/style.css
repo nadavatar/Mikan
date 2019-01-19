@@ -1,3 +1,23 @@
-.jumbotron{
-    background-color:  #e6f2ff
+.body {
+    background-color: #F6F6F6;
+}
+
+#editData {
+    background-color: #32CD32;
+    color:  whitesmoke;
+    border: none;
+}
+
+#addMember {
+    background-color: #32CD32;
+    color: whitesmoke;
+    border: none;
+}
+
+.jumbotron {
+    background-color: #F6F6F6;
+}
+
+#addMemberForm {
+    display: none;
 }
