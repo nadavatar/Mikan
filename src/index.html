@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body class="body">
 <center>
     <div class="container">
-        <h1><b>Mikan</b></h1>
+        <h1 id="header"><b>Mikan</b></h1>
         <div class="jumbotron">
 
-            <h3><b>Where Is Everyone?</b></h3>
+            <h3 id="miniHeader"><b>Where Is Everyone?</b></h3>
 <!--
             <p>Nadav</p>
             <div class="form-group">
@@ -28,8 +28,21 @@
             <button id="change" type="submit" class="btn btn-primary" onclick="changeStatus()">Change Status</button> 
 -->         
             <div id="members-container"></div>
-            <button id="changeLocationButton" style="background-color: #FF0800; border: none;" type="submit" class="btn btn-primary">Change Location</button> 
-
+            <!-- <button id="changeLocationButton" style="background-color: #FF0800; border: none;" type="submit" class="btn btn-primary">Change Location</button>  -->
+            <button id="addMember" type="submit" class="btn btn-primary">Add Member</button> 
+            <button id="editData"  type="submit" class="btn btn-primary">Edit Data</button> 
+            <form id="addMemberForm">
+                <h3>Add member</h3>
+                <input placeholder="Name..." id="memberName" />
+                <select name="status" id="memberStatus">
+                    <option value="TEAM">בצוות</option>
+                    <option value="MEETING">בפגישה</option>
+                    <option value="VACATION">בחופש</option>
+                    <option value="DUTY">בתורנות</option>
+                    <option value="OUT">בחוץ לכמה דקות</option> 
+                </select>
+                <button id="addMemberButton" type="button">Add</button>
+            </form>
         </div>    
         <div class="footer">
                 <small>&copy Written By Nadav Atar</small>
