@@ -34,7 +34,19 @@
                 </div>
                 <!-- /.modal-dialog --> 
             </div>
-            
+            <button id="addMember" type="submit" class="btn btn-primary">Add Member</button> 
+            <form id="addMemberForm">
+                    <h3>Add member</h3>
+                    <input placeholder="Name..." type="text" id="memberName" required/>
+                    <select name="status" id="memberStatus">
+                        <option value="TEAM">בצוות</option>
+                        <option value="MEETING">בפגישה</option>
+                        <option value="VACATION">בחופש</option>
+                        <option value="DUTY">בתורנות</option>
+                        <option value="OUT">בחוץ לכמה דקות</option> 
+                    </select>
+                    <button id="addMemberButton" type="button">Add</button>
+            </form>
         </div>
     </center>
     

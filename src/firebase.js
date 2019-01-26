@@ -19,7 +19,6 @@ db.settings(settings);
 
 
 function addMember(name, status) {
-  if (name.length > 0) {
   return new Promise((resolve, reject) => {
       db.collection("members").add({
         name,
@@ -34,11 +33,6 @@ function addMember(name, status) {
       reject("Error adding document: " + error);
     });
   });
-}
-else {
-  console.error("Name element must contain at least one character!")
-}
-
 }
 
 function getAllMembers() {
