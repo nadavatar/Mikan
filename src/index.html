@@ -2,59 +2,48 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Mikan</title>
+    <title>Mikan2</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
-
+    
 </head>
 <body class="body">
-<center>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 id="header"><b>Mikan</b></h1>
-            <h3 id="miniHeader"><b>Where Is Everyone?</b></h3>
-<!--
-            <p>Nadav</p>
-            <div class="form-group">
-                <select name="Location" id="selection">
-                    <option value="team">בצוות</option>
-                    <option value="outForFewMinutes">יצאתי לכמה דקות</option>
-                    <option value="vacation">בחופש</option>
-                    <option value="duty">בתורנות</option>
-                    <option value="meeting">בפגישה</option>
-                </select>
+    <center>
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-12">
+                    <h1><b>Mikan</b></h1>
+                    <h3><b>Where Is Everyone?</b>
+                    </h3>
+                    <div id="tableContainer" class="table-responsive">
+                        <table id="mytable" class="table table-bordred table-striped">                 
+                            <thead>                            
+                                <th></th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </thead>
+                            <tbody id="tBodyContainer">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.modal-content --> 
+                </div>
+                <!-- /.modal-dialog --> 
             </div>
-            <button id="change" type="submit" class="btn btn-primary" onclick="changeStatus()">Change Status</button> 
--->         
-            <div id="members-container"></div>
-            <!-- <button id="changeLocationButton" style="background-color: #FF0800; border: none;" type="submit" class="btn btn-primary">Change Location</button>  -->
-            <button id="addMember" type="submit" class="btn btn-primary">Add Member</button> 
-            <button id="editData"  type="submit" class="btn btn-primary">Edit Data</button> 
-            <form id="addMemberForm">
-                <h3>Add member</h3>
-                <input placeholder="Name..." id="memberName" />
-                <select name="status" id="memberStatus">
-                    <option value="TEAM">בצוות</option>
-                    <option value="MEETING">בפגישה</option>
-                    <option value="VACATION">בחופש</option>
-                    <option value="DUTY">בתורנות</option>
-                    <option value="OUT">בחוץ לכמה דקות</option> 
-                </select>
-                <button id="addMemberButton" type="button">Add</button>
-            </form>
-        </div>    
-        <div class="footer">
-                <small>&copy Written By Nadav Atar</small>
+            
         </div>
-    </div>
-</center>
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    </center>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
     <script src="firebase.js"></script>
-        <script src="main.js"></script>
-
+    <script src="main.js"></script>
+    
 </body>
 </html>

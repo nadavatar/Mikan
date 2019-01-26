@@ -19,11 +19,12 @@ db.settings(settings);
 
 
 function addMember(name, status) {
+  if (name.length > 0) {
   return new Promise((resolve, reject) => {
-    db.collection("members").add({
-      name,
-      status, 
-    })
+      db.collection("members").add({
+        name,
+        status, 
+      })
     .then(function(docRef) {
       resolve("Document written with ID: " + docRef.id);
       members = getMembers();
@@ -33,7 +34,11 @@ function addMember(name, status) {
       reject("Error adding document: " + error);
     });
   });
-  
+}
+else {
+  console.error("Name element must contain at least one character!")
+}
+
 }
 
 function getAllMembers() {
