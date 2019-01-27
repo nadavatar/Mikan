@@ -44,6 +44,8 @@ function handleAddMember(e) {
 			.then(msg => {
 				console.log('member added');
 				getMembers();
+				document.getElementById('addMemberForm').style.display = 'none';
+				document.getElementById('addMember').style.display = 'block';
 			})
 			.catch(err => console.error(error));
 	}
