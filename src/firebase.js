@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyCbQJDzonsTfgUz1IEwDxYSvfxMdw6PHGE",
@@ -12,49 +11,50 @@ var config = {
 firebase.initializeApp(config);
 
 var db = firebase.firestore();
-const settings = {timestampsInSnapshots: true};
+const settings = {
+  timestampsInSnapshots: true
+};
 db.settings(settings);
 
 
 
 
-function addMember(name, status) {
+function addMemberToDb(name, status) {
   return new Promise((resolve, reject) => {
-      db.collection("members").add({
+    db.collection("members").add({
         name,
-        status, 
+        status,
       })
-    .then(function(docRef) {
-      resolve("Document written with ID: " + docRef.id);
-      members = getMembers();
-      renderMembers(members);
-    })
-    .catch(function(error) {
-      reject("Error adding document: " + error);
-    });
+      .then(function (docRef) {
+        resolve("Document written with ID: " + docRef.id);
+        members = getMembers();
+        renderMembers(members);
+      })
+      .catch(function (error) {
+        reject("Error adding document: " + error);
+      });
   });
 }
 
 function getAllMembers() {
   return new Promise((resolve, reject) => {
-    // TODO get all members
-    
+
     db.collection("members").get()
-    .then((querySnapshot) => {
-      const members = [];
-      querySnapshot.forEach((doc) => {
-        // console.log(`${doc.id} => ${doc.data().status}`);
-        member = {
-          name: doc.data().name,
-          status: doc.data().status
-        }
-        members.push(member);
-      });
-      resolve(members);
-      
-    })
-    .catch(error => reject(error));
-    
+      .then((querySnapshot) => {
+        const members = [];
+        querySnapshot.forEach((doc) => {
+          // console.log(`${doc.id} => ${doc.data().status}`);
+          member = {
+            name: doc.data().name,
+            status: doc.data().status
+          }
+          members.push(member);
+        });
+        resolve(members);
+
+      })
+      .catch(error => reject(error));
+
     // resolve(members);
   })
 }
