@@ -17,6 +17,14 @@ const settings = {
 db.settings(settings);
 
 
+function removeMember(name) {
+    db.collection("members").doc(name).delete().then(function() {
+      console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+
+}
 
 
 function addMemberToDb(name, status) {

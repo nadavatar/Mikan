@@ -2,7 +2,6 @@ let members = [];
 
 const memberHtmlTemplate = `
                 <tr>
-                <td><input type="checkbox" class="checkthis" /></td>
                 <td>{{namePlaceholder}}</td>
                 <td>{{statusPlaceHolder}}</td>
                 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
@@ -19,9 +18,15 @@ const statusDictionary = {
 
 window.onload = () => {
 	getMembers();
+	//Add Member Event
 	document.getElementById('addMember').addEventListener('click', showAddMemberForm);
 	document.getElementById('addMemberButton').addEventListener('click', handleAddMember);
-	// document.getElementById('addMember').addEventListener('click', handleAddMember);
+
+	//Delete Member Event
+
+
+	//Edit Member Event
+
 }
 
 function getMembers() {
@@ -65,10 +70,3 @@ function renderMembers(members) {
 		membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceHolder}}', statusDictionary[member.status]);
 	});
 }
-
-
-//The acc sums all the members and after that it adds it into the table
-const tableRowTemplate = members.reduce((acc, currMember) => {
-	return acc += memberHtmlTemplate.replace('{{namePlaceholder}}', currMember.name).replace('{{statusPlaceHolder}}', statusDictionary[currMember.status]);
-}, '');
-document.getElementById('tBodyContainer').innerHTML = tableRowTemplate;
