@@ -18,11 +18,22 @@ db.settings(settings);
 
 
 function removeMember(name) {
-    db.collection("members").doc(name).delete().then(function() {
-      console.log("Document successfully deleted!");
-  }).catch(function(error) {
-      console.error("Error removing document: ", error);
-  });
+  let collectionRef = fs.collection(members);
+      collectionRef.where("name", "==", name)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.delete().then(() => {
+            console.log("Document successfully deleted!");
+          }).catch(function(error) {
+            console.error("Error removing document: ", error);
+          });
+        });
+      })
+      .catch(function(error) {
+        console.log("Error getting documents: ", error);
+      });
+    renderMembers(getAllMembers());
 
 }
 
