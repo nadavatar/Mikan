@@ -59,7 +59,8 @@ function renderMembers(members) {
 
 	membersContainer.innerHTML = '';
 
-	members.forEach(member => {
+	for (let index = 0; index < members.length; index++){
+		member = members[index];
 		membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceHolder}}', statusDictionary[member.status]);
-	});
+	}
 }
