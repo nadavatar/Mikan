@@ -69,7 +69,7 @@ function getAllMembers() {
             status: doc.data().status
           }
           members.push(member);
-        });
+        })
         resolve(members);
 
       })
