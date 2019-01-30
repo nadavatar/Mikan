@@ -1,6 +1,5 @@
 let members = getAllMembers();
 
-
 console.log(members);
 
 const memberHtmlTemplate = `
@@ -31,6 +30,9 @@ function getMembers() {
 	getAllMembers()
 		.then(members => {
 			renderMembers(members);
+		})
+		.then(members => {
+			return members;
 		})
 		.catch(error => console.error(error));
 }
@@ -68,6 +70,3 @@ function renderMembers(members) {
 	}
 }
 
-function findMemberName(index){
-	console.log(members);
-}

@@ -63,7 +63,6 @@ function getAllMembers() {
       .then((querySnapshot) => {
         const members = [];
         querySnapshot.forEach((doc) => {
-          // console.log(`${doc.id} => ${doc.data().status}`);
           member = {
             name: doc.data().name,
             status: doc.data().status
@@ -78,3 +77,20 @@ function getAllMembers() {
     // resolve(members);
   })
 }
+
+function findMemberName(index){
+	db.collection("members").get()
+      .then((querySnapshot) => {
+        const members = [];
+        querySnapshot.forEach((doc) => {
+          member = {
+            name: doc.data().name,
+            status: doc.data().status
+          }
+          members.push(member);
+        })
+        name = members[index].name;
+        removeMember(name);
+      })
+    }
+    
