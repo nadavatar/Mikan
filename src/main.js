@@ -1,13 +1,11 @@
 let members = getAllMembers();
 
-console.log(members);
-
 const memberHtmlTemplate = `
                 <tr>
                 <td>{{namePlaceholder}}</td>
                 <td>{{statusPlaceHolder}}</td>
-                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-				<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{indexPlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="editMember({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+				<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{indexPlaceHolder}}, 1)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 				<div id="{{indexPlaceHolder}}"></div>
                 </tr>
 `;

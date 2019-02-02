@@ -90,7 +90,22 @@ function findMemberName(index){
           members.push(member);
         })
         name = members[index].name;
-        removeMember(name);
+          removeMember(name);
+        
       })
     }
+
+function editMember(index) {
+    let membersInHtml = document.getElementById('tBodyContainer');
+    let row = membersInHtml.getElementsByTagName('tr')[index];
+    let rowName = row.getElementsByTagName('td')[0];
+    let rowStatus = row.getElementsByTagName('td')[1];
+    let rowEditButton = row.getElementsByTagName('td')[2];
+    let rowDeleteButton = row.getElementsByTagName('td')[3];
+    let namePlaceholder = '<input class="sticky-content-input form-control edit-element" value="${rowName}" />'
+
+    
+    
+    
+}
     
