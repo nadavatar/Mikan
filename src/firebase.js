@@ -95,17 +95,37 @@ function findMemberName(index){
       })
     }
 
-function editMember(index) {
+function toggleEditMode(index) {
     let membersInHtml = document.getElementById('tBodyContainer');
     let row = membersInHtml.getElementsByTagName('tr')[index];
     let rowName = row.getElementsByTagName('td')[0];
+    let rowNameValue = rowName.textContent;
     let rowStatus = row.getElementsByTagName('td')[1];
     let rowEditButton = row.getElementsByTagName('td')[2];
     let rowDeleteButton = row.getElementsByTagName('td')[3];
-    let namePlaceholder = '<input class="sticky-content-input form-control edit-element" value="${rowName}" />'
+    
+    let input = '<td><input class="sticky-content-input form-control edit-element" value="Enter the member`s name..." style="display:none"/></td>';
+    let updatestatus = '<select name="status" id="memberStatus"><option value="TEAM">בצוות</option><option value="MEETING">בפגישה</option><option value="VACATION">בחופש</option><option value="VACATION">בחופש</option><option value="OUT">יצאתי לכמה דקות</option></select>';
+		let updateButton = '<td><i class="clickable glyphicon glyphicon-check edit-element" style="display: none" onclick="updateMember()></i></td>';
+    
+    var tmpObj=document.createElement("input");
+    tmpObj.innerHTML='<!--THIS DATA SHOULD BE REPLACED-->';
+    ObjParent=rowName.parentNode; //Okey, element should be parented
+    ObjParent.replaceChild(tmpObj,rowName); //here we placing our temporary data instead of our target, so we can find it then and replace it into whatever we want to replace to
+    ObjParent.innerHTML=ObjParent.innerHTML.replace('<input><!--THIS DATA SHOULD BE REPLACED--></input>',input);
+    
+    //var tmpObj2=document.createElement("input");
+    //tmpObj2.innerHTML='<!--THIS DATA SHOULD BE REPLACED-->';
+    //ObjParent=rowName.parentNode; //Okey, element should be parented
+    //ObjParent.replaceChild(tmpObj,rowName); //here we placing our temporary data instead of our target, so we can find it then and replace it into whatever we want to replace to
+    //ObjParent.innerHTML=ObjParent.innerHTML.replace('<input><!--THIS DATA SHOULD BE REPLACED--></input>',input);
+    
+    rowEditButton.style.display = 'none';
+    rowDeleteButton.style.display = 'none';
 
-    
-    
-    
+
 }
     
+function updateMember() {
+
+}

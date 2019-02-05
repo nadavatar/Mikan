@@ -2,11 +2,10 @@ let members = getAllMembers();
 
 const memberHtmlTemplate = `
                 <tr>
-                <td>{{namePlaceholder}}</td>
+                <td>{{namePlaceholder}} <input id="namePlaceholder" class="sticky-content-input form-control edit-element" value="" style="display: none" /></td>
                 <td>{{statusPlaceHolder}}</td>
-                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="editMember({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-				<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{indexPlaceHolder}}, 1)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-				<div id="{{indexPlaceHolder}}"></div>
+                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+				<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{index2PlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                 </tr>
 `;
 
@@ -64,7 +63,8 @@ function renderMembers(members) {
 
 	for (let index = 0; index < members.length; index++){
 		member = members[index];
-		membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceHolder}}', statusDictionary[member.status]).replace('{{indexPlaceHolder}}', index);
+		membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceHolder}}', statusDictionary[member.status])
+		.replace('{{indexPlaceHolder}}', index).replace('{{index2PlaceHolder}}', index);
 	}
 }
 
