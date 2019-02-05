@@ -1,11 +1,27 @@
 let members = getAllMembers();
 
 const memberHtmlTemplate = `
-                <tr>
-                <td>{{namePlaceholder}} <input id="namePlaceholder" class="sticky-content-input form-control edit-element" value="" style="display: none" /></td>
-                <td>{{statusPlaceHolder}}</td>
-                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-				<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{index2PlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                <tr class="normal">
+					<td>
+						<span class="normal">{{namePlaceholder}}</span>
+						<span class="edit"><input type="text" value="" /></span>
+					</td>
+					<td>
+						<span class="normal">{{statusPlaceHolder}}</span>
+						<span class="edit">
+							<select name="status" id="memberStatus">
+								<option value="TEAM">בצוות</option>
+								<option value="MEETING">בפגישה</option>
+								<option value="VACATION">בחופש</option>
+								<option value="DUTY">בתורנות</option>
+								<option value="OUT">יצאתי לכמה דקות</option>
+							</select>
+						</span>
+					</td>
+					<td>
+					<p class="normal" data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
+					</td>
+					<td><p class="normal" data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{index2PlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                 </tr>
 `;
 

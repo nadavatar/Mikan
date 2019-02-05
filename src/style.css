@@ -11,3 +11,11 @@
 #addMemberForm {
     display: none;
 }
+
+tr.normal span.normal, tr.edit span.edit {
+    display: inline-block;
+}
+
+tr.normal span.edit, tr.edit span.normal {
+    display: none;
+}
