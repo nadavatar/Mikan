@@ -4,7 +4,7 @@ const memberHtmlTemplate = `
                 <tr class="normal">
 					<td>
 						<span class="normal">{{namePlaceholder}}</span>
-						<span class="edit"><input type="text" value="" /></span>
+						<span class="edit"><input id="placeholderName" type="text" value="" /></span>
 					</td>
 					<td>
 						<span class="normal">{{statusPlaceHolder}}</span>
@@ -19,9 +19,23 @@ const memberHtmlTemplate = `
 						</span>
 					</td>
 					<td>
-					<p class="normal" data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
+						<span class="normal">
+							<p class="normal" data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></button></p>
+						</span>
+						<span class="edit">
+							<i class="clickable glyphicon glyphicon-check edit-element" onclick="updateMember()"></i>	
+						</span>
 					</td>
-					<td><p class="normal" data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="findMemberName({{index2PlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+					<td>
+						<p class="normal" data-placement="top" data-toggle="tooltip" title="Delete">
+							<button onclick="findMemberName({{index2PlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
+								<span class="glyphicon glyphicon-trash">
+								</span>
+							</button>
+						</p>
+						<span class="edit">
+						</span>
+					</td>
                 </tr>
 `;
 

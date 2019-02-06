@@ -96,6 +96,7 @@ function findMemberName(index){
     }
 
 function toggleEditMode(index) {
+
     let membersInHtml = document.getElementById('tBodyContainer');
     let row = membersInHtml.getElementsByTagName('tr')[index];
     let rowName = row.getElementsByTagName('td')[0];
@@ -104,9 +105,21 @@ function toggleEditMode(index) {
     let rowStatus = row.getElementsByTagName('td')[1];
     let rowStatusElement = row.getElementsByTagName('span')[0];
     let rowStatusInput = row.getElementsByTagName('span')[1];
+    let rowSubmit = row.getElementsByTagName('td')[2];
+    let rowSubmitButton = row.getElementsByTagName('span')[1];
+
+    row.className = "edit";
+    rowSubmitButton.addEventListener('click', updateMember(index));
   
 }
     
-function updateMember() {
+function updateMember(index) {
 
+  let membersInHtml = document.getElementById('tBodyContainer');
+  let row = membersInHtml.getElementsByTagName('tr')[index];
+  let inputElement = row.getElementsByTagName('td')[0];
+  let inputSpan = row.getElementsByTagName('span')[1];
+  let inputValue = row.getElementsByTagName('input')[0].textContent;
+
+  
 }
