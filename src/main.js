@@ -54,4 +54,3 @@ function renderMembers(members) {
         membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceholder}}', statusDictionary[member.status]);         
     });
 }
-
