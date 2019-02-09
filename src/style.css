@@ -2,22 +2,20 @@
     background-color: #F6F6F6;
 }
 
-#editData {
-    background-color: #32CD32;
-    color:  whitesmoke;
-    border: none;
-}
-
 #addMember {
     background-color: #32CD32;
     color: whitesmoke;
     border: none;
 }
 
-.jumbotron {
-    background-color: #F6F6F6;
+#addMemberForm {
+    display: none;
 }
 
-#addMemberForm {
+tr.normal span.normal, tr.edit span.edit {
+    display: inline-block;
+}
+
+tr.normal span.edit, tr.edit span.normal {
     display: none;
 }
