@@ -9,7 +9,7 @@ const memberHtmlTemplate = `
 					<td>
 						<span class="normal">{{statusPlaceHolder}}</span>
 						<span class="edit">
-							<select name="status" id="memberStatus">
+							<select name="status" id="memberStatus-{{indexPlaceHolder}}">
 								<option value="TEAM">בצוות</option>
 								<option value="MEETING">בפגישה</option>
 								<option value="VACATION">בחופש</option>
@@ -28,7 +28,7 @@ const memberHtmlTemplate = `
 					</td>
 					<td>
 						<p class="normal" data-placement="top" data-toggle="tooltip" title="Delete">
-							<button onclick="findMemberName({{index2PlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
+							<button onclick="findMemberName({{indexPlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
 								<span class="glyphicon glyphicon-trash">
 								</span>
 							</button>
@@ -86,15 +86,16 @@ function showAddMemberForm() {
 	document.getElementById('addMemberForm').style.display = 'block';
 }
 
-function renderMembers(members) {
+function renderMembers(members = []) {
 	const membersContainer = document.getElementById('tBodyContainer');
 
 	membersContainer.innerHTML = '';
 
-	for (let index = 0; index < members.length; index++){
+	for (let index = 0; index < members.length; index++) {
 		member = members[index];
-		membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceHolder}}', statusDictionary[member.status])
-		.replace('{{indexPlaceHolder}}', index).replace('{{index2PlaceHolder}}', index);
+		membersContainer.innerHTML += memberHtmlTemplate
+			.replace(/{{namePlaceholder}}/g, member.name)
+			.replace(/{{statusPlaceHolder}}/g, statusDictionary[member.status])
+			.replace(/{{indexPlaceHolder}}/g, index);
 	}
 }
-
