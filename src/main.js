@@ -89,12 +89,6 @@ function showAddMemberForm() {
 function renderMembers(members = []) {
 	const membersContainer = document.getElementById('tBodyContainer');
 
-<<<<<<< HEAD
-    members.forEach(member => {
-        membersContainer.innerHTML += memberHtmlTemplate.replace('{{namePlaceholder}}', member.name).replace('{{statusPlaceholder}}', statusDictionary[member.status]);         
-    });
-}
-=======
 	membersContainer.innerHTML = '';
 
 	for (let index = 0; index < members.length; index++) {
@@ -105,4 +99,3 @@ function renderMembers(members = []) {
 			.replace(/{{indexPlaceHolder}}/g, index);
 	}
 }
->>>>>>> 6dbfaeb450b68e6e04a49ed5e7d00d498f91a035

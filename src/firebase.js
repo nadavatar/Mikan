@@ -39,29 +39,6 @@ function removeMember(name) {
 }
 
 
-<<<<<<< HEAD
-function addMember(name, status) {
-  if (name.length > 0) {
-  return new Promise((resolve, reject) => {
-      db.collection("members").add({
-        name,
-        status, 
-      })
-    .then(function(docRef) {
-      resolve("Document written with ID: " + docRef.id);
-      members = getMembers();
-      renderMembers(members);
-    })
-    .catch(function(error) {
-      reject("Error adding document: " + error);
-    });
-  });
-}
-else {
-  console.error("Name element must contain at least one character!")
-}
-
-=======
 function addMemberToDb(name, status) {
   return new Promise((resolve, reject) => {
     db.collection("members").add({
@@ -77,7 +54,6 @@ function addMemberToDb(name, status) {
         reject("Error adding document: " + error);
       });
   });
->>>>>>> 6dbfaeb450b68e6e04a49ed5e7d00d498f91a035
 }
 
 function getAllMembers() {
