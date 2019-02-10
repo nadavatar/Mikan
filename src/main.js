@@ -1,13 +1,13 @@
 let members = getAllMembers();
 
 const memberHtmlTemplate = `
-                <tr class="normal">
+				<tr class="normal member-row-{{indexPlaceHolder}}">
 					<td>
-						<span class="normal">{{namePlaceholder}}</span>
-						<span class="edit"><input id="placeholderName" type="text" value="" /></span>
+						<span class="normal member-name-{{indexPlaceHolder}}">{{namePlaceholder}}</span>
+						<span class="edit"><input id="placeholderName" type="text" value="{{namePlaceholder}}" /></span>
 					</td>
 					<td>
-						<span class="normal">{{statusPlaceHolder}}</span>
+						<span data-status-value="{{statusValuePlaceHolder}}" class="normal member-status-value-{{indexPlaceHolder}}">{{statusPlaceHolder}}</span>
 						<span class="edit">
 							<select name="status" id="memberStatus-{{indexPlaceHolder}}">
 								<option value="TEAM">בצוות</option>
@@ -22,7 +22,7 @@ const memberHtmlTemplate = `
 						<span class="normal">
 							<p class="normal" data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></button></p>
 						</span>
-						<span class="edit">
+						<span class="edit edit-submit-{{indexPlaceHolder}}">
 							<i class="clickable glyphicon glyphicon-check edit-element" onclick="updateMember()"></i>	
 						</span>
 					</td>
@@ -96,6 +96,26 @@ function renderMembers(members = []) {
 		membersContainer.innerHTML += memberHtmlTemplate
 			.replace(/{{namePlaceholder}}/g, member.name)
 			.replace(/{{statusPlaceHolder}}/g, statusDictionary[member.status])
+			.replace(/{{statusValuePlaceHolder}}/g, member.status)
 			.replace(/{{indexPlaceHolder}}/g, index);
 	}
+}
+
+
+function toggleEditMode(index) {
+	document.querySelector('.member-row-' + index).classList.replace('normal', 'edit');
+	const statusValue = document.querySelector('.member-status-value-' + index).getAttribute('data-status-value');
+	document.querySelector('#memberStatus-' + index).value = statusValue;
+	document.querySelector('.edit-submit-' + index).addEventListener('click', () => {
+
+		// Need to add an id for all Firebase calls
+		// since the name and status might change
+		updateMember()
+	});
+
+}
+
+function updateMember() {
+
+
 }

@@ -18,24 +18,24 @@ db.settings(settings);
 
 
 function removeMember(name) {
-      collectionRef = db.collection("members");
-      collectionRef.where("name", "==", name)
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach((doc) => {
-          doc.ref.delete().then(() => {
-            console.log("Document successfully deleted!");
-            renderMembers(getMembers());
-          }).catch(function(error) {
-            console.error("Error removing document: ", error);
-            renderMembers(getMembers());
-          });
+  collectionRef = db.collection("members");
+  collectionRef.where("name", "==", name)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach((doc) => {
+        doc.ref.delete().then(() => {
+          console.log("Document successfully deleted!");
+          renderMembers(getMembers());
+        }).catch(function (error) {
+          console.error("Error removing document: ", error);
+          renderMembers(getMembers());
         });
-      })
-      .catch(function(error) {
-        console.log("Error getting documents: ", error);
-        renderMembers(getMembers());
       });
+    })
+    .catch(function (error) {
+      console.log("Error getting documents: ", error);
+      renderMembers(getMembers());
+    });
 }
 
 
@@ -78,48 +78,19 @@ function getAllMembers() {
   })
 }
 
-function findMemberName(index){
-	db.collection("members").get()
-      .then((querySnapshot) => {
-        const members = [];
-        querySnapshot.forEach((doc) => {
-          member = {
-            name: doc.data().name,
-            status: doc.data().status
-          }
-          members.push(member);
-        })
-        name = members[index].name;
-          removeMember(name);
-        
+function findMemberName(index) {
+  db.collection("members").get()
+    .then((querySnapshot) => {
+      const members = [];
+      querySnapshot.forEach((doc) => {
+        member = {
+          name: doc.data().name,
+          status: doc.data().status
+        }
+        members.push(member);
       })
-    }
+      name = members[index].name;
+      removeMember(name);
 
-function toggleEditMode(index) {
-
-    let membersInHtml = document.getElementById('tBodyContainer');
-    let row = membersInHtml.getElementsByTagName('tr')[index];
-    let rowName = row.getElementsByTagName('td')[0];
-    let rowNameElement = row.getElementsByTagName('span')[0];
-    let rowNameInput = row.getElementsByTagName('span')[1];
-    let rowStatus = row.getElementsByTagName('td')[1];
-    let rowStatusElement = row.getElementsByTagName('span')[0];
-    let rowStatusInput = row.getElementsByTagName('span')[1];
-    let rowSubmit = row.getElementsByTagName('td')[2];
-    let rowSubmitButton = row.getElementsByTagName('span')[1];
-
-    row.className = "edit";
-    rowSubmitButton.addEventListener('click', updateMember(index));
-  
-}
-    
-function updateMember(index) {
-
-  let membersInHtml = document.getElementById('tBodyContainer');
-  let row = membersInHtml.getElementsByTagName('tr')[index];
-  let inputElement = row.getElementsByTagName('td')[0];
-  let inputSpan = row.getElementsByTagName('span')[1];
-  let inputValue = row.getElementsByTagName('input')[0].textContent;
-
-  
+    })
 }
