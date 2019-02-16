@@ -94,3 +94,7 @@ function findMemberName(index) {
 
     })
 }
+
+function updateMember(name,status) {
+  console.log(name, status);
+}

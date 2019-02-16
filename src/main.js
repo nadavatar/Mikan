@@ -4,12 +4,12 @@ const memberHtmlTemplate = `
 				<tr class="normal member-row-{{indexPlaceHolder}}">
 					<td>
 						<span class="normal member-name-{{indexPlaceHolder}}">{{namePlaceholder}}</span>
-						<span class="edit"><input id="placeholderName" type="text" value="{{namePlaceholder}}" /></span>
+						<span class="edit"><input id="placeholderName-{{indexPlaceHolder}}" type="text" value="{{namePlaceholder}}" onchange="updateNameValue({{indexPlaceHolder}})"/></span>
 					</td>
 					<td>
 						<span data-status-value="{{statusValuePlaceHolder}}" class="normal member-status-value-{{indexPlaceHolder}}">{{statusPlaceHolder}}</span>
 						<span class="edit">
-							<select name="status" id="memberStatus-{{indexPlaceHolder}}">
+							<select name="status" id="memberStatus-{{indexPlaceHolder}}" onchange="updateStatusValue({{indexPlaceHolder}})">
 								<option value="TEAM">בצוות</option>
 								<option value="MEETING">בפגישה</option>
 								<option value="VACATION">בחופש</option>
@@ -104,18 +104,21 @@ function renderMembers(members = []) {
 
 function toggleEditMode(index) {
 	document.querySelector('.member-row-' + index).classList.replace('normal', 'edit');
-	const statusValue = document.querySelector('.member-status-value-' + index).getAttribute('data-status-value');
-	document.querySelector('#memberStatus-' + index).value = statusValue;
+	
 	document.querySelector('.edit-submit-' + index).addEventListener('click', () => {
-
-		// Need to add an id for all Firebase calls
-		// since the name and status might change
-		updateMember()
+		const statusValue = document.querySelector('.member-status-value-' + index).getAttribute('data-status-value');
+		document.querySelector('#memberStatus-' + index).value = statusValue;
+		const nameValue = document.querySelector('#placeholderName-' + index).value;
+		
+		updateMember(nameValue, statusValue);
 	});
 
-}
+ }
 
-function updateMember() {
+ function updateStatusValue(index) {
+	  return document.querySelector('#memberStatus-' + index).value;
+ }
 
-
-}
+ function updateNameValue(index) {
+	return document.querySelector('#placeholderName-' + index).value;
+ }

@@ -1,15 +1,31 @@
 .body {
     background-color: #F6F6F6;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.tBodyContainerClass {
+    background-color: #F6F6F6; 
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #addMember {
     background-color: #32CD32;
     color: whitesmoke;
     border: none;
+    margin: 25px 0;
 }
 
 #addMemberForm {
     display: none;
+}
+
+#header {
+    margin-top: 35px;
+}
+
+#mini-header {
+    margin: 35px;
 }
 
 tr.normal span.normal, tr.edit span.edit {
