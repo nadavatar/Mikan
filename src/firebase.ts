@@ -1,4 +1,6 @@
-import {initializeApp, firestore} from 'firebase';
+import {firestore} from 'firebase';
+import {initializeApp} from 'firebase/app';
+
 import { renderMembers, getMembers } from './main';
 
 // Initialize Firebase
@@ -58,6 +60,7 @@ export async function getAllMembers() {
     const members = [];
     querySnapshot.forEach((doc) => {
       const member = {
+        id: doc.id,
         name: doc.data().name,
         status: doc.data().status
       }
@@ -86,6 +89,11 @@ function findMemberName(index) {
     })
 }
 
-export function updateMember(name,status) {
-  console.log(name, status);
+export async function updateMember({id, name,status}) {
+  
+  const user = db.collection("members").doc(id);
+  const updated = await user.update({ name, status });
+
 }
+
+window.updateMember = updateMember;

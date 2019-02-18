@@ -3,15 +3,15 @@ import {getAllMembers, addMemberToDb, updateMember} from './firebase';
 let members = getAllMembers();
 
 const memberHtmlTemplate = `
-<tr class="normal member-row-{{indexPlaceHolder}}">
+<tr class="normal member-row-{{idPlaceholder}}">
 	<td>
-		<span class="normal member-name-{{indexPlaceHolder}}">{{namePlaceholder}}</span>
-		<span class="edit"><input id="placeholderName-{{indexPlaceHolder}}" type="text" value="{{namePlaceholder}}" onchange="updateNameValue({{indexPlaceHolder}})"/></span>
+		<span class="normal member-name-{{idPlaceholder}}">{{namePlaceholder}}</span>
+		<span class="edit"><input id="placeholderName-{{idPlaceholder}}" type="text" value="{{namePlaceholder}}" /></span>
 	</td>
 	<td>
-		<span data-status-value="{{statusValuePlaceHolder}}" class="normal member-status-value-{{indexPlaceHolder}}">{{statusPlaceHolder}}</span>
+		<span data-status-value="{{statusValuePlaceHolder}}" class="normal member-status-value-{{idPlaceholder}}">{{statusPlaceHolder}}</span>
 		<span class="edit">
-			<select name="status" id="memberStatus-{{indexPlaceHolder}}" onchange="updateStatusValue({{indexPlaceHolder}})">
+			<select name="status" id="memberStatus-{{idPlaceholder}}" >
 				<option value="TEAM">בצוות</option>
 				<option value="MEETING">בפגישה</option>
 				<option value="VACATION">בחופש</option>
@@ -22,15 +22,15 @@ const memberHtmlTemplate = `
 	</td>
 	<td>
 		<span class="normal">
-			<p class="normal" data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode({{indexPlaceHolder}})" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></button></p>
+			<p class="normal" data-placement="top" data-toggle="tooltip" title="Edit"><button onclick="toggleEditMode('{{idPlaceholder}}')" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></button></p>
 		</span>
-		<span class="edit edit-submit-{{indexPlaceHolder}}">
-			<i class="clickable glyphicon glyphicon-check edit-element" onclick="updateMember()"></i>	
+		<span class="edit edit-submit-{{idPlaceholder}}">
+			<i class="clickable glyphicon glyphicon-check edit-element"></i>	
 		</span>
 	</td>
 	<td>
 		<p class="normal" data-placement="top" data-toggle="tooltip" title="Delete">
-			<button onclick="findMemberName({{indexPlaceHolder}})" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
+			<button onclick="findMemberName('{{idPlaceholder}}')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
 				<span class="glyphicon glyphicon-trash">
 				</span>
 			</button>
@@ -98,28 +98,24 @@ export function renderMembers(members = []) {
 			.replace(/{{namePlaceholder}}/g, member.name)
 			.replace(/{{statusPlaceHolder}}/g, statusDictionary[member.status])
 			.replace(/{{statusValuePlaceHolder}}/g, member.status)
-			.replace(/{{indexPlaceHolder}}/g, index.toString());
+			.replace(/{{idPlaceholder}}/g, member.id);
 	}
 }
 
 
-function toggleEditMode(index) {
-	document.querySelector('.member-row-' + index).classList.replace('normal', 'edit');
+function toggleEditMode(id) {
+	document.querySelector('.member-row-' + id).classList.replace('normal', 'edit');
 	
-	document.querySelector('.edit-submit-' + index).addEventListener('click', () => {
-		const statusValue = document.querySelector('.member-status-value-' + index).getAttribute('data-status-value');
-		(document.querySelector('#memberStatus-' + index) as any).value = statusValue;
-		const nameValue = (document.querySelector('#placeholderName-' + index) as any).value;
-		
-		updateMember(nameValue, statusValue);
+	document.querySelector('.edit-submit-' + id)
+		.addEventListener('click', async () => {
+			const status = (document.querySelector(`#memberStatus-${id}`) as any).value;
+			const name = (document.querySelector(`#placeholderName-${id}`) as any).value;
+			await updateMember({ id, name, status });
+			document.querySelector('.member-row-' + id).classList.replace('edit', 'normal');
+			renderMembers(await getMembers());
+
+			
 	});
+}
+window.toggleEditMode = toggleEditMode;
 
- }
-
- function updateStatusValue(index) {
-	  return (document.querySelector('#memberStatus-' + index) as any).value;
- }
-
- function updateNameValue(index) {
-	return (document.querySelector('#placeholderName-' + index) as any).value;
- }
