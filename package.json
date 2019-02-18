@@ -1,0 +1,33 @@
+{
+  "name": "mikan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "parcel ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nadavatar/Mikan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nadavatar/Mikan/issues"
+  },
+  "homepage": "https://github.com/nadavatar/Mikan#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0",
+    "parcel-bundler": "^1.11.0",
+    "sass": "^1.17.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "firebase": "^5.8.3"
+  }
+}
