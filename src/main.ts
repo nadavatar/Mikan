@@ -1,6 +1,6 @@
-import {getAllMembers, addMemberToDb, updateMember} from './firebase';
+import {getAllMembers, addMemberToDb, updateMember, removeMember} from './firebase';
 
-let members = getAllMembers();
+// let members = getAllMembers();
 
 const memberHtmlTemplate = `
 <tr class="normal member-row-{{idPlaceholder}}">
@@ -30,7 +30,7 @@ const memberHtmlTemplate = `
 	</td>
 	<td>
 		<p class="normal" data-placement="top" data-toggle="tooltip" title="Delete">
-			<button onclick="findMemberName('{{idPlaceholder}}')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
+			<button onclick="removeMember('{{namePlaceholder}}')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
 				<span class="glyphicon glyphicon-trash">
 				</span>
 			</button>
@@ -118,4 +118,6 @@ function toggleEditMode(id) {
 	});
 }
 window.toggleEditMode = toggleEditMode;
+
+window.removeMember = removeMember;
 

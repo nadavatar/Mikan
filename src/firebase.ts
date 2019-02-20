@@ -18,7 +18,7 @@ initializeApp(config);
 var db = firestore();
 
 
-async function removeMember(name) {
+export async function removeMember(name) {
   const collectionRef = db.collection("members");
   const querySnapshot = await collectionRef.where("name", "==", name)
     .get();
@@ -72,22 +72,22 @@ export async function getAllMembers() {
   }
 }
 
-function findMemberName(index) {
-  db.collection("members").get()
-    .then((querySnapshot) => {
-      const members = [];
-      querySnapshot.forEach((doc) => {
-        const member = {
-          name: doc.data().name,
-          status: doc.data().status
-        }
-        members.push(member);
-      })
-      const name = members[index].name;
-      removeMember(name);
+// function findMemberName(index) {
+//   db.collection("members").get()
+//     .then((querySnapshot) => {
+//       const members = [];
+//       querySnapshot.forEach((doc) => {
+//         const member = {
+//           name: doc.data().name,
+//           status: doc.data().status
+//         }
+//         members.push(member);
+//       })
+//       const name = members[index].name;
+//       removeMember(name);
 
-    })
-}
+//     })
+// }
 
 export async function updateMember({id, name,status}) {
   
