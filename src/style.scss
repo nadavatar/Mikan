@@ -1,39 +1,47 @@
 .body {
-    background-color: #F6F6F6;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #f6f6f6;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .tBodyContainerClass {
-    background-color: #F6F6F6;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  background-color: #f6f6f6;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #addMember {
-    background-color: #32CD32;
-    color: whitesmoke;
-    border: none;
-    margin: 25px 0;
+  background-color: #32cd32;
+  color: whitesmoke;
+  border: none;
+  margin: 25px 0;
 }
 
 #addMemberForm {
-    display: none;
+  display: none;
 }
 
 #header {
-    margin-top: 35px;
+  margin-top: 35px;
 }
 
 #mini-header {
-    margin: 35px;
+  margin: 35px;
 }
 
 tr.normal span.normal,
 tr.edit span.edit {
-    display: inline-block;
+  display: inline-block;
 }
 
 tr.normal span.edit,
 tr.edit span.normal {
-    display: none;
+  display: none;
+}
+
+#memberName {
+  margin-right: 5px;
+}
+
+#memberStatus {
+  margin-right: 5px;
 }
