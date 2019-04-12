@@ -5,7 +5,7 @@ import { renderMembers, getMembers } from './main';
 
 // Initialize Firebase
 var config = {
-  apiKey: 'AIzaSyCbQJDzonsTfgUz1IEwDxYSvfxMdw6PHGE',
+  apiKey: process.env.FirebaseMikanKey,
   authDomain: 'mikan-dev-d2b71.firebaseapp.com',
   databaseURL: 'https://mikan-dev-d2b71.firebaseio.com',
   projectId: 'mikan-dev-d2b71',
@@ -70,25 +70,8 @@ export async function getAllMembers() {
   }
 }
 
-// function findMemberName(index) {
-//   db.collection("members").get()
-//     .then((querySnapshot) => {
-//       const members = [];
-//       querySnapshot.forEach((doc) => {
-//         const member = {
-//           name: doc.data().name,
-//           status: doc.data().status
-//         }
-//         members.push(member);
-//       })
-//       const name = members[index].name;
-//       removeMember(name);
-
-//     })
-// }
-
 export async function updateMember({ id, name, status }) {
-  const user = db.collection('members').doc(id);
+  const user = await db.collection('members').doc(id);
   const updated = await user.update({ name, status });
 }
 
